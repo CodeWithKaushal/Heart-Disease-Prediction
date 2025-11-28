@@ -186,6 +186,40 @@ st.markdown("""
         margin-bottom: 0.75rem;
         border-left: 4px solid var(--primary);
     }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2rem !important;
+        }
+        
+        .stForm {
+            padding: 1rem !important;
+        }
+        
+        .metric-value {
+            font-size: 2.5rem !important;
+        }
+        
+        .result-container {
+            padding: 1.5rem !important;
+            margin-top: 1rem !important;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            font-size: 0.9rem;
+            padding: 0 0.5rem;
+        }
+        
+        .recommendation-item {
+            padding: 0.75rem;
+        }
+        
+        /* Adjust Plotly chart container on mobile */
+        .js-plotly-plot {
+            margin-bottom: 1rem;
+        }
+    }
     </style>
     """, unsafe_allow_html=True)
 
