@@ -208,7 +208,7 @@ with st.sidebar:
     model_choice = st.selectbox(
         "Select Algorithm",
         ["LogisticRegression", "XGBoostClassifier", "SVC"],
-        index=0
+        index=1
     )
     
     st.markdown("---")
