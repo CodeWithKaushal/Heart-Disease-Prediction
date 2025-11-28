@@ -215,12 +215,40 @@ with st.sidebar:
     st.markdown("### 📊 Model Accuracy")
     
     acc_data = {
-        "Logistic Regression": "85%",
-        "XGBoost": "83%",
-        "SVC": "84%"
+        "LogisticRegression": "69.3%",
+        "XGBoostClassifier": "98.5%",
+        "SVC": "100.0%"
     }
     
-    st.metric("Current Model Accuracy", acc_data.get(model_choice, "N/A"))
+    best_params = {
+        "LogisticRegression": {'C': 1.0, 'penalty': 'l2', 'solver': 'liblinear'},
+        "XGBoostClassifier": {'learning_rate': 0.08, 'max_depth': 2, 'n_estimators': 2000},
+        "SVC": {'C': 10, 'gamma': 0.01}
+    }
+    
+    st.metric("Model Accuracy (Test Set)", acc_data.get(model_choice, "N/A"))
+    
+    with st.expander("See Best Parameters"):
+        st.json(best_params.get(model_choice, {}))
+
+    st.markdown("---")
+    st.markdown("### 📈 Dataset Statistics")
+    st.markdown("""
+    <div style="background-color: #1e293b; padding: 1rem; border-radius: 0.5rem; border: 1px solid #334155;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span style="color: #94a3b8;">Total Samples:</span>
+            <span style="font-weight: 700; color: #f1f5f9;">1025</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+            <span style="color: #94a3b8;">Training Set:</span>
+            <span style="font-weight: 700; color: #34d399;">820</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <span style="color: #94a3b8;">Test Set:</span>
+            <span style="font-weight: 700; color: #fb7185;">205</span>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("---")
     st.info("This tool is for educational purposes only. Always consult a healthcare professional.")
